@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <set>
 
 std::vector<std::string> split(std::string str, char delimiter)
 {
@@ -17,7 +18,6 @@ std::vector<std::string> split(std::string str, char delimiter)
 	}
 	return res;
 }
-
 
 int main(int ac, char **av)
 {
@@ -35,9 +35,13 @@ int main(int ac, char **av)
 			std::vector<std::string> words;
 			std::replace_if(line.begin(), line.end(), isspace, ' ');
 			words = split(line, ' ');
-			for (int i = 0; i < words.size(); i++)
-				std::cout << words[i] << " ";
-			std::cout << std::endl;
+			if (words.size() > 0 && words[0] == "server")
+			{
+				if (words.size() == 2 && words[1] == "{")
+					std::cout << "OK" << std::endl;
+				else
+					std::cout << "KO" << std::endl;
+			}
 		}
 	}
 	else
