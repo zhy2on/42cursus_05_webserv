@@ -6,10 +6,18 @@
 #include <sstream>
 #include <set>
 
+// class ServerBlockParser : public ConfigParser
+// {
+// 	private:
+// 		std::vector<std::string> parseIndex()
+// 		{
+			
+// 		}
+// };
 
 class ConfigParser
 {
-	private:
+	public:
 		std::vector<std::string> splitStr(std::string str, char delimiter)
 		{
 			std::istringstream iss(str);
@@ -18,7 +26,10 @@ class ConfigParser
 
 			while (getline(iss, buf, delimiter))
 			{
-				res.push_back(buf);
+				if (buf.size() > 0)
+				{
+					res.push_back(buf);
+				}
 			}
 			return res;
 		}
@@ -36,13 +47,9 @@ class ConfigParser
 				{
 					std::replace_if(line.begin(), line.end(), isspace, ' ');
 					words = splitStr(line, ' ');
-					if (words.size() > 0 && words[0] == "server")
-					{
-						if (words.size() == 2 && words[1] == "{")
-							std::cout << "OK" << std::endl;
-						else
-							std::cout << "KO" << std::endl;
-					}
+					for (int i = 0; i < words.size(); ++i)
+						std::cout << words[i] << " ";
+					std::cout << std::endl;
 				}
 			}
 			else
