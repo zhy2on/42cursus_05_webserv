@@ -1,10 +1,12 @@
 #ifndef SERVER_SOCKET_HPP
 #define SERVER_SOCKET_HPP
 
-#include "Socket.hpp"
 #include <fcntl.h>
+
 #include <cstdlib>
 #include <iostream>
+
+#include "socket.hpp"
 
 class ServerSocket : public Socket {
    public:
@@ -12,7 +14,7 @@ class ServerSocket : public Socket {
 	~ServerSocket();
 
 	void ReadyToAccept();
-	void AcceptClient();
+	int AcceptClient();
 
    private:
 	ServerSocket();

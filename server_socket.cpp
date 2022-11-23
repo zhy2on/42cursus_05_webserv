@@ -1,6 +1,8 @@
-#include "ServerSocket.hpp"
+#include "server_socket.hpp"
 
-ServerSocket::ServerSocket(int host, int port) {
+ServerSocket::ServerSocket(int host, int port)
+{
+	type_ = Socket::SERVER_TYPE;
 	address_.sin_family = AF_INET;
 	address_.sin_addr.s_addr = INADDR_ANY;
 	address_.sin_port = htons(port);
@@ -14,8 +16,14 @@ void ServerSocket::ReadyToAccept() {
 	ListenSocket();
 }
 
-void ServerSocket::AcceptClient() {
-	
+int ServerSocket::AcceptClient() {
+	int accept_d;
+	if ((accept_d = accept(sock_d_, NULL, NULL)) < 0) {
+		perror("accept");
+		exit(EXIT_FAILURE);
+	}
+	fcntl(accept_d, F_SETFL, O_NONBLOCK);
+	return accept_d;
 }
 
 void ServerSocket::CreateSocket() {
