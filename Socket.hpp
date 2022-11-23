@@ -10,6 +10,9 @@ class Socket {
 	struct sockaddr_in address_;
 
    public:
+	Socket();
+	virtual ~Socket();
+
 	const enum {
 		CLIENT_TYPE,
 		SERVER_TYPE

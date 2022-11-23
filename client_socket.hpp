@@ -16,7 +16,7 @@ class ClientSocket : public Socket {
 
    private:
 	ClientSocket();
-	std::vector<std::string> buffer_;
+	std::string message_;
 };
 
 #endif
