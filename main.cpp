@@ -6,14 +6,20 @@
 #include <sstream>
 #include <set>
 
-// class ServerBlockParser : public ConfigParser
-// {
-// 	private:
-// 		std::vector<std::string> parseIndex()
-// 		{
+class ServerBlockParser : public ConfigParser
+{
+	private:
+		std::vector<std::string> parseIndex()
+		{
 			
-// 		}
-// };
+		}
+	
+	public:
+		void parseBlock()
+		{
+			
+		}
+};
 
 class ConfigParser
 {
@@ -34,7 +40,6 @@ class ConfigParser
 			return res;
 		}
 
-	public:
 		void parseFile(std::string filename)
 		{
 			std::ifstream file(filename);
@@ -61,7 +66,6 @@ class ConfigParser
 
 int main(int ac, char **av)
 {
-	std::string line;
 	ConfigParser cf;
 
 	if (ac != 2)
