@@ -1,8 +1,7 @@
 #ifndef CLIENT_SOCKET_HPP
 #define CLIENT_SOCKET_HPP
 
-#include <fcntl.h>
-
+#include <unistd.h>
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -13,6 +12,9 @@ class ClientSocket : public Socket {
    public:
 	ClientSocket(int sock_d);
 	~ClientSocket();
+
+	const std::string &GetMessage() const;
+	void ReadMessage();
 
    private:
 	ClientSocket();

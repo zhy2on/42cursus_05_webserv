@@ -13,7 +13,7 @@ class Socket {
 	Socket();
 	virtual ~Socket();
 
-	const enum {
+	enum {
 		CLIENT_TYPE,
 		SERVER_TYPE
 	};

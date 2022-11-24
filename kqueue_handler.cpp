@@ -14,7 +14,7 @@ void KqueueHandler::CollectEvents(uintptr_t ident, int16_t filter,
 }
 
 const std::vector<struct kevent> &KqueueHandler::MonitorEvents() {
-   struct kevent tmp[8];
+	struct kevent tmp[8];
 	int n_of_events;
 
 	if ((n_of_events = kevent(kq_, (struct kevent *)change_list_.data(),
@@ -22,9 +22,10 @@ const std::vector<struct kevent> &KqueueHandler::MonitorEvents() {
 		perror("kevent");
 		exit(EXIT_FAILURE);
 	}
-   for (int i = 0; i < n_of_events; ++i) {
-      event_list_.push_back(tmp[i]);
-   }
+	event_list_.clear();
 	change_list_.clear();
-   return event_list_;
+	for (int i = 0; i < n_of_events; ++i) {
+		event_list_.push_back(tmp[i]);
+	}
+	return event_list_;
 }

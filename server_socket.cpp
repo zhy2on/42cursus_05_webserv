@@ -49,7 +49,7 @@ void ServerSocket::BindSocket() {
 }
 
 void ServerSocket::ListenSocket() {
-	if (listen(sock_d_, 1) < 0) {
+	if (listen(sock_d_, 5) < 0) {
 		perror("listen");
 		exit(EXIT_FAILURE);
 	}
